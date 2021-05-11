@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+      <div>{{ form.branchId }}</div>
+      <div>{{ form.name }}</div>
+      <div>{{ form.tel1 }}</div>
+      <div>{{ form.manager }}</div>
+      <div>{{ form.ip }}</div>
+      <div>{{ form.status }}</div>
+    <button name="button">ok</button>
+</form>
+</body>
+</html>

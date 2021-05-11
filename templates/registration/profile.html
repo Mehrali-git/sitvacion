@@ -1,0 +1,30 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title%}کاربر{%endblock%}
+{% block titlebrow %}ویرایش کاربر{%endblock%}
+{% block main %}
+<div class="col-lg-12 mb-0 float-left">
+  <!-- general form elements -->
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title mb-0 float-left">ویرایش کاربر</h3>
+    </div><!-- /.box-header -->
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row">
+          <div class="col-lg-6">{{form.username|as_crispy_field}}</div>
+          <div class="col-lg-6">{{form.email|as_crispy_field}}</div>
+          <div class="col-lg-6">{{form.first_name|as_crispy_field}}</div>
+          <div class="col-lg-6">{{form.last_name|as_crispy_field}}</div>
+          <div class="col-lg-6">{{form.special_user|as_crispy_field}}</div>
+          <div class="col-lg-6 pad">{{form.is_author|as_crispy_field}}</div>
+          <span class="">برای تغییر گذرواژه <a href="{% url 'password_change' %}">کلیک کنید</a></span>
+        </div>
+        <p class="pad">
+          <button class="btn btn-success mar" name="button"> ویرایش کاربر</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

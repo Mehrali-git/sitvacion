@@ -1,0 +1,40 @@
+{% extends 'registration/baselogin.html' %}
+{%load static%}
+{% load widget_tweaks %}
+
+
+	{% block title%}
+	اهراز هویت
+	{%endblock %}
+	{%block login%}
+
+<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+	{{form.username|add_class:"input100"}}
+	{% if form.username.errors %}
+	{%for error in form.username.errors %}
+	<span class="error">{{error}}</span>
+	{% endfor%}
+	{%endif%}
+	<span class="focus-input100 font-persian" data-placeholder="نام کاربری"></span>
+</div>
+<div class="wrap-input100 validate-input" data-validate="Enter password">
+	<span class="btn-show-pass">
+		<i class="zmdi zmdi-eye"></i>
+	</span>
+	{{form.password|add_class:"input100"}}
+	<span class="focus-input100 font-persian" data-placeholder="کلمه عبور"></span>
+</div>
+{%endblock%}
+{%block task%}
+ورود
+{%endblock%}
+{%block forgotpass%}
+{#<div class="wrap-label100">#}
+{#	<a target="_blank" class="font-persian" href="{% url 'password_reset' %}">فراموشی رمز عبور</a>#}
+{#	<br>#}
+{#	<a target="_blank" class="font-persian" href="{% url 'register' %}">ثبت نام در سایت</a>#}
+{#</div>#}
+
+<div class="wrap-label100">
+</div>
+{%endblock%}

@@ -1,0 +1,742 @@
+{% load static %}
+{% load jformat %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+    <title> گزارش و چاپ </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'adminlt/dist/css/adminlte.min.css' %}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- bootstrap rtl -->
+    <link rel="stylesheet" href="{% static 'adminlt/dist/css/bootstrap-rtl.min.css' %}">
+    <!-- template rtl version -->
+    <link rel="stylesheet" href="{% static 'adminlt/dist/css/custom-style.css' %}">
+    <link rel="stylesheet" href="{% static 'my_change/css/mycssprint.css' %}">
+</head>
+{#onload="window.print();"#}
+<body style="border: double;margin: 3px;">
+<div class="wrapper">
+    <!-- Main content -->
+    <!-- Main content -->
+    <div class="invoice">
+        <!-- title row -->
+        <div class="row" style="border-style: double;padding: 5px;margin: 8px 8px 3px 8px ;">
+            <div class="col-12">
+                <h5 class="m-1 p-2">
+                    <i class="fa"> <img src="{% static 'my_change\images\icon\bmi.png' %}" alt="Bank_Melli"
+                                        class="brand-image img-circle elevation-4"
+                                        style="opacity: 10;float: right !important;"></i>
+                    شعبه {{ user.branch_name }}
+                    <small class="float-left">{{ obj_date|jformat:"%Y-%m-%d" }}</small>
+                </h5>
+            </div>
+            <div class="row col-sm-12 invoice-col">
+                <b>سیتواسیون صندوق به تاریخ: </b>
+                {{ object_list.date_persian|jformat:'%Y-%m-%d' }}
+            </div>
+        </div>
+        <div class="row invoice-col">
+        </div>
+        <div class="row" style="margin: 20px 2px 10px 2px;">
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="esk">
+                    <tbody>
+                    <tr>
+                        <th colspan="5" style="text-align: center">اسکناس</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 5%">ردیف</th>
+                        <th style="width: 35%">نوع اسکناس</th>
+                        <th style="width: 15%">بسته</th>
+                        <th style="width: 15%">قطعه</th>
+                        <th style="width: 30%">جمع</th>
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>اسکناس 1000</td>
+                        <td>
+                            <label id="es_1_b">0</label>
+                        </td>
+                        <td>
+                            <label id="es_1_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_es_1">{{ object_list.es_1 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>اسکناس 2000</td>
+                        <td><label id="es_2_b">0</label></td>
+                        <td><label id="es_2_g">0</label></td>
+                        <td><label id="id_es_2">{{ object_list.es_2 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>اسکناس 5000</td>
+                        <td><label id="es_5_b">0</label></td>
+                        <td><label id="es_5_g">0</label></td>
+                        <td><label id="id_es_5">{{ object_list.es_5 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>اسکناس 10,000</td>
+                        <td><label id="es_10_b">0</label></td>
+                        <td>
+                            <label id="es_10_g">0</label>
+                        </td>
+                        <td><label id="id_es_10">{{ object_list.es_10 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>اسکناس 20,000</td>
+                        <td>
+                            <label id="es_20_b">0</label>
+                        </td>
+                        <td>
+                            <label id="es_20_g">0</label>
+                        </td>
+                        <td><label id="id_es_20">{{ object_list.es_20 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>اسکناس 50,000</td>
+                        <td>
+                            <label id="es_50_b">0</label>
+                        </td>
+                        <td>
+                            <label id="es_50_g">0</label>
+                        </td>
+                        <td><label id="id_es_50">{{ object_list.es_50 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>اسکناس 100,000</td>
+                        <td>
+                            <label id="es_100_b">0</label>
+                        </td>
+                        <td>
+                            <label id="es_100_g">0</label>
+                        </td>
+                        <td><label id="id_es_100">{{ object_list.es_100 }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>اسکناس فرسوده و ناقص</td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                        <td><label id="id_es_far">{{ object_list.es_far }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td><label>جمع کل</label></td>
+                        <td>
+                            <label id="es_b">0</label>
+                        </td>
+                        <td>
+                            <label id="es_g">0</label>
+                        </td>
+                        <td>
+                            <div><label id="eskenas">0</label></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="tambr">
+                    <tbody>
+                    <tr>
+                        <th style="width: 3%">ردیف</th>
+                        <th style="width: 50%">تمبر مالیاتی</th>
+                        <th style="width: 15%">تعداد «قطعه/جلد»</th>
+                        <th style="width: 32%">جمع</th>
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>تمبر مالیاتی</td>
+                        <td>
+                            <label id="t_m_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_m"> {{ object_list.t_m }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>تمبر واخواست</td>
+                        <td>
+                            <label id="t_va_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_va"> {{ object_list.t_va }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>تمبر دسته چک 25 برگی «جلد»</td>
+                        <td>
+                            <label id="t_ch_25_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_ch_25">{{ object_list.t_ch_25 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>تمبر دسته چک 50 برگی «جلد»</td>
+                        <td>
+                            <label id="t_ch_50_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_ch_50">{{ object_list.t_ch_50 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>تمبر دسته چک 100 برگی «جلد»</td>
+                        <td>
+                            <label id="t_ch_100_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_ch_100"> {{ object_list.t_ch_100 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>تمبر دسته چک حواله ها</td>
+                        <td>
+                            <label id="t_ch_hav_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_ch_hav"> {{ object_list.t_ch_hav }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>تمبر چک های تضمین شده با نام بدون مبلغ</td>
+                        <td>
+                            <label id="t_ch_taz_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_ch_taz">{{ object_list.t_ch_taz }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>تمبر دستور پرداخت</td>
+                        <td>
+                            <label id="t_pard_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_pard">{{ object_list.t_pard }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>تمبر سفته</td>
+                        <td>
+                            <label id="t_saf_g">0</label>
+                        </td>
+                        <td>
+                            <label id="t_saf"> {{ object_list.t_saf }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td><label>جمع کل</label></td>
+                        <td>
+                            <label id="tambr_g">0</label>
+                        </td>
+                        <td>
+                            <label id="tambr_sum">0</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" style="margin: 20px 2px 10px 2px;">
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="ir_chek">
+                    <tbody>
+                    <tr>
+                        <th style="width: 5%">ردیف</th>
+                        <th style="width: 35%">نوع ایران چک</th>
+                        <th style="width: 15%">تعداد بسته</th>
+                        <th style="width: 15%">تعداد قطعه</th>
+                        <th style="width: 3035%">جمع</th>
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>ایران چک 500,000</td>
+                        <td>
+                            <label id="ir_50_b">0</label>
+                        </td>
+                        <td>
+                            <label id="ir_50_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_ir_50">{{ object_list.ir_50 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>ایران چک 1,000,000</td>
+                        <td>
+                            <label id="ir_100_b">0</label>
+                        </td>
+                        <td>
+                            <label id="ir_100_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_ir_100">{{ object_list.ir_100 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>ایران چک فرسوده و ناقص</td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                        <td>
+                            <label id="id_ir_far">{{ object_list.ir_far }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>4.</td>
+                        <td><label>جمع کل</label></td>
+                        <td>
+                            <label id="ir_b">0</label>
+                        </td>
+                        <td>
+                            <label id="ir_g">0</label>
+                        </td>
+                        <td>
+                            <label id="ir_sum">0</label>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="seke">
+                    <tbody>
+                    <tr>
+                        <th style="width: 5%">ردیف</th>
+                        <th style="width: 60%">نوع سکه</th>
+                        <th style="width: 20%">تعداد قطعه</th>
+                        <th style="width: 15%">جمع</th>
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>سکه تمام بهار آزادی</td>
+                        <td>
+                            <label id="id_sek_t">{{ object_list.sek_t }}</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>سکه نیم بهار آزادی</td>
+                        <td>
+                            <label id="sek_n">{{ object_list.sek_n }}</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>سکه ربع بهار آزادی</td>
+                        <td>
+                            <label id="sek_r">{{ object_list.sek_r }}</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td><label>جمع کل</label></td>
+                        <td>
+                            <label id="seke_sum">0</label>
+                        </td>
+                        <td>
+                            <label>0</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" style="margin: 20px 2px 10px 2px;">
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="nikl">
+                    <tbody>
+                    <tr>
+                        <th style="width: 10%">ردیف</th>
+                        <th style="width: 250px">نوع نیکل</th>
+                        <th style="width: 20%">تعداد</th>
+                        <th style="width: 30%">جمع</th>
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>نیکل 1,000 ریالی</td>
+                        <td>
+                            <label id="n_1_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_n_1">{{ object_list.n_1 }}</label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>نیکل 2,000 ریالی</td>
+                        <td>
+                            <label id="n_2_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_n_2">{{ object_list.n_2 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>نیکل 5,000 ریالی</td>
+                        <td>
+                            <label id="n_5_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_n_5">{{ object_list.n_5 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>نیکل 10,000 ریالی</td>
+                        <td>
+                            <label id="n_10_g">0</label>
+                        </td>
+                        <td>
+                            <label id="id_n_10">{{ object_list.n_10 }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>جمع کل</td>
+                        <td>
+                            <div><label id="n_g">0</label></div>
+                        </td>
+                        <td>
+                            <div><label id="n_sum">0</label></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 table-responsive">
+                <table class="my-tbl-css" id="sandogh">
+                    <tbody>
+                    <tr>
+                        <th colspan="3">وضعیت صندوق</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 10px">ردیف</th>
+                        <th style="width: 400px">صندوق</th>
+                        <th style="width: 40%">مبلغ</th>
+
+                    </tr>
+                    <tr>
+                        <td>۱.</td>
+                        <td>پرداختی امروز</td>
+                        <td>
+                            <label id="id_pardakht">{{ object_list.pardakht }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>دریافتی امروز</td>
+                        <td>
+                            <label id="id_daryaft">{{ object_list.daryaft }}</label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+
+                        <td>مجموع اسکناس ، نیکل و ایران چک</td>
+                        <td>
+                            <label id="sum_esk_nik_ir">0</label>
+                            <input type="hidden" id="id_sum_esk_nik_ir" value="0"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td><label>اختلاف صندوق</label></td>
+                        <td>
+                            <label id="diff_cash">0</label>
+                        </td>
+                    <tr>
+                        <td>5.</td>
+                        <td><label>مانده دیروز</label></td>
+                        <td>
+                            <label id="mande">{{ object_list.total_yesterday }}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td><label>مانده صندوق</label></td>
+                        <td>
+                            <label id="cash">{{ object_list.total }}</label>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg-4"><span>امضا</span></div>
+                <div class="col-lg-4"><span>امضا</span></div>
+                <div class="col-lg-4"><span>امضا</span></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'adminlt/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'adminlt/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE -->
+<script src="{% static 'adminlt/dist/js/adminlte.js' %}"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="{% static 'adminlt/plugins/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'adminlt/dist/js/demo.js' %}"></script>
+<script src="{% static 'adminlt/dist/js/pages/dashboard3.js' %}"></script>
+<script type="text/javascript">
+    function sandgo() {
+        var esk = ex_normalNum(document.getElementById("eskenas").innerHTML);
+        var nikl = ex_normalNum(document.getElementById("n_sum").innerHTML);
+        var ir_ch = ex_normalNum(document.getElementById("ir_sum").innerHTML);
+        var c = parseInt(esk) + parseInt(nikl) + parseInt(ir_ch);
+        document.getElementById("sum_esk_nik_ir").innerHTML = separateNum(c);
+        document.getElementById("id_sum_esk_nik_ir").value = separateNum(c);
+    }
+
+    function sum_split_row(x, y, z, row) {
+        var s3 = document.getElementById(z).innerHTML;
+        num = ex_normalNum(s3);
+        temp = num / (100 * row);
+        var box = parseInt(temp);
+        document.getElementById(x).innerHTML = box;
+        document.getElementById(y).innerHTML = (num - (box * 100) * row) / row;
+    }
+
+    function sum_split_row_tambr(input, result, row) {
+        var val = convertNumbers2English(document.getElementById(input).innerHTML);
+        temp = val / row;
+        var count = parseInt(temp);
+        document.getElementById(result).innerHTML = count;
+    }
+
+    function sum_split_row_tambr_chk(input, result, chk, row) {
+        var val = convertNumbers2English(document.getElementById(input).innerHTML);
+        temp = val / row;
+        var count = parseInt(temp) / chk;
+        document.getElementById(result).innerHTML = count;
+    }
+
+    function separateNum(val, input) {
+        {#alert("val:"+val);#}
+        var value = convertNumbers2English(val);
+        {#alert("value:"+value);#}
+        var nStr = value + '';
+        nStr = nStr.replace(/\,/g, "");
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        if (input !== undefined) {
+
+            input.value = x1 + x2;
+        } else {
+            return x1 + x2;
+        }
+    }
+
+    function ex_normalNum(num) {
+        num = num.replace(/,\s?/g, "");
+        return (num);
+    }
+
+    function computeTableColumnTotal(tableId, colNumber) {
+        // find the table with id attribute tableId
+        // return the total of the numerical elements in column colNumber
+        // skip the top row (headers) and bottom row (where the total will go)
+        var result = 0;
+        {#alert(tableId);#}
+        try {
+            var tableElem = window.document.getElementById(tableId);
+            var tableBody = tableElem.getElementsByTagName("tbody").item(0);
+
+            var howManyRows = tableBody.rows.length;
+
+            for (var i = 1; i < (howManyRows - 1); i++) // skip first and last row (hence i=1, and howManyRows-1)
+            {
+                var thisTrElem = tableBody.rows[i];
+                var thisTdElem = thisTrElem.cells[colNumber];
+                try {
+                    var thisTextNode = ex_normalNum(thisTdElem.querySelector('label').innerHTML);
+                    {#alert(thisTextNode);#}
+                    {#alert(thisTextNode);#}
+                } catch (ex) {
+                    var thisTextNode = 0;
+                }
+                {#    var thisTextNode = thisTdElem.childNodes.item(0);#}
+                {#       if (debugScript)#}
+                {#       {#}
+                {#          window.alert("text is " + thisTextNode.data);#}
+                {#       } // end if#}
+                // try to convert text to numeric
+                var thisNumber = parseInt(thisTextNode)
+                {#alert(thisNumber);#}
+                // if you didn't get back the value NaN (i.e. not a number), add into result
+                if (!isNaN(thisNumber))
+                    result += thisNumber;
+
+            } // end for
+
+        } // end try
+        catch (ex) {
+            window.alert("Exception in function computeTableColumnTotal()\n" + ex);
+            result = 0;
+        } finally {
+            return result;
+        }
+
+    }
+
+    function convertNumbers2English(input) {
+        try {
+            var persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+            return input.replace(/[\u06F0-\u06F90]/g, function (m) {
+                return persianDigits.indexOf(m);
+            });
+        } catch (ex) {
+            return input;
+        }
+
+    }
+
+    window.onload = function () {
+        try {
+            document.getElementById("id_es_1").innerHTML = separateNum(document.getElementById("id_es_1").innerHTML);
+            sum_split_row('es_1_b', 'es_1_g', 'id_es_1', '1000');
+            document.getElementById("id_es_2").innerHTML = separateNum(document.getElementById("id_es_2").innerHTML);
+            sum_split_row('es_2_b', 'es_2_g', 'id_es_2', '2000');
+            document.getElementById("id_es_5").innerHTML = separateNum(document.getElementById("id_es_5").innerHTML);
+            sum_split_row('es_5_b', 'es_5_g', 'id_es_5', '5000');
+            document.getElementById("id_es_10").innerHTML = separateNum(document.getElementById("id_es_10").innerHTML);
+            sum_split_row('es_10_b', 'es_10_g', 'id_es_10', '10000');
+            document.getElementById("id_es_20").innerHTML = separateNum(document.getElementById("id_es_20").innerHTML);
+            sum_split_row('es_20_b', 'es_20_g', 'id_es_20', '20000');
+            document.getElementById("id_es_50").innerHTML = separateNum(document.getElementById("id_es_50").innerHTML);
+            sum_split_row('es_50_b', 'es_50_g', 'id_es_50', '50000');
+            document.getElementById("id_es_100").innerHTML = separateNum(document.getElementById("id_es_100").innerHTML);
+            sum_split_row('es_100_b', 'es_100_g', 'id_es_100', '100000');
+            document.getElementById("id_es_far").innerHTML = separateNum(document.getElementById("id_es_far").innerHTML);
+
+
+            sum_split_row_tambr('t_m', 't_m_g', 10000);
+            document.getElementById("t_m").innerHTML = separateNum(document.getElementById("t_m").innerHTML)
+            sum_split_row_tambr('t_va', 't_va_g', 200);
+            document.getElementById("t_va").innerHTML = separateNum(document.getElementById("t_va").innerHTML)
+            sum_split_row_tambr_chk('t_ch_25', 't_ch_25_g', 25, 200);
+            document.getElementById("t_ch_25").innerHTML = separateNum(document.getElementById("t_ch_25").innerHTML)
+            sum_split_row_tambr_chk('t_ch_50', 't_ch_50_g', 50, 200);
+            document.getElementById("t_ch_50").innerHTML = separateNum(document.getElementById("t_ch_50").innerHTML)
+            sum_split_row_tambr_chk('t_ch_100', 't_ch_100_g', 100, 200);
+            document.getElementById("t_ch_100").innerHTML = separateNum(document.getElementById("t_ch_100").innerHTML)
+            sum_split_row_tambr('t_ch_hav', 't_ch_hav_g', 200);
+            document.getElementById("t_ch_hav").innerHTML = separateNum(document.getElementById("t_ch_hav").innerHTML)
+            sum_split_row_tambr('t_ch_taz', 't_ch_taz_g', 200);
+            document.getElementById("t_ch_taz").innerHTML = separateNum(document.getElementById("t_ch_taz").innerHTML)
+            sum_split_row_tambr('t_pard', 't_pard_g', 200);
+            document.getElementById("t_pard").innerHTML = separateNum(document.getElementById("t_pard").innerHTML)
+            sum_split_row_tambr('t_saf', 't_saf_g', 200);
+            document.getElementById("t_saf").innerHTML = separateNum(document.getElementById("t_saf").innerHTML)
+
+
+            sum_split_row_tambr('id_n_1', 'n_1_g', 1000);
+            document.getElementById("id_n_1").innerHTML = separateNum(document.getElementById("id_n_1").innerHTML);
+            sum_split_row_tambr('id_n_2', 'n_2_g', 1000);
+            document.getElementById("id_n_2").innerHTML = separateNum(document.getElementById("id_n_2").innerHTML);
+            sum_split_row_tambr('id_n_5', 'n_5_g', 1000);
+            document.getElementById("id_n_5").innerHTML = separateNum(document.getElementById("id_n_5").innerHTML);
+            sum_split_row_tambr('id_n_10', 'n_10_g', 1000);
+            document.getElementById("id_n_10").innerHTML = separateNum(document.getElementById("id_n_10").innerHTML);
+
+
+            document.getElementById("id_ir_50").innerHTML = separateNum(document.getElementById("id_ir_50").innerHTML);
+            sum_split_row('ir_50_b', 'ir_50_g', 'id_ir_50', '500000');
+            document.getElementById("id_ir_100").innerHTML = separateNum(document.getElementById("id_ir_100").innerHTML);
+            sum_split_row('ir_100_b', 'ir_100_g', 'id_ir_100', '1000000');
+            document.getElementById("id_ir_far").innerHTML = separateNum(document.getElementById("id_ir_far").innerHTML);
+
+
+            document.getElementById("id_sek_t").innerHTML = separateNum(document.getElementById("id_sek_t").innerHTML)
+            document.getElementById("sek_n").innerHTML = separateNum(document.getElementById("sek_n").innerHTML)
+            document.getElementById("sek_r").innerHTML = separateNum(document.getElementById("sek_r").innerHTML)
+
+            document.getElementById("id_daryaft").innerHTML = separateNum(document.getElementById("id_daryaft").innerHTML);
+            document.getElementById("id_pardakht").innerHTML = separateNum(document.getElementById("id_pardakht").innerHTML);
+
+            document.getElementById("eskenas").innerHTML = separateNum(computeTableColumnTotal("esk", 4));
+            document.getElementById("n_sum").innerHTML = separateNum(computeTableColumnTotal("nikl", 3));
+            document.getElementById("ir_sum").innerHTML = separateNum(computeTableColumnTotal("ir_chek", 4));
+            document.getElementById("tambr_sum").innerHTML = separateNum(computeTableColumnTotal("tambr", 3));
+            document.getElementById("seke_sum").innerHTML = separateNum(computeTableColumnTotal("seke", 2));
+
+            {#final_cash();#}
+            sandgo();
+            document.getElementById("mande").innerHTML = separateNum(document.getElementById("mande").innerHTML);
+            document.getElementById("cash").innerHTML = separateNum(document.getElementById("cash").innerHTML);
+        } catch (ex) {
+            alert(ex);
+        }
+    }
+</script>

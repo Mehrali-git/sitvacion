@@ -1,0 +1,23 @@
+<li class="nav-item">
+    <a href="{% url 'password_change' %}" class="nav-link">
+        <i class="fa  fa-lock nav-icon"></i>
+        <p>تغییر رمز</p>
+    </a>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-plus-square-o"></i>
+        <p>
+            <i class="fa fa-angle-left right"></i>
+            سیتواسیون
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{% url 'stv:detailAdd' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>ثبت سیتواسیون</p>
+            </a>
+        </li>
+    </ul>
+</li>

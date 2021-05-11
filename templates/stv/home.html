@@ -1,0 +1,51 @@
+{% extends 'stv/base.html' %}
+{% load jformat %}
+
+{% block main %}
+    <div class="">امروز
+        {{ obj_date|jformat:"%d-%m-%Y" }}
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">شعبه {{ user.branch_name }}</h3>
+            {% if error %}
+                {{ error }}
+            {% endif %}
+        </div>
+        {% if object_list %}
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th>تاریخ ثبت</th>
+                        <th>مانده دیروز</th>
+                        <th>مانده امروز</th>
+                        <th>چاپ</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if  object_list.date_persian|stringformat:"s" == obj_date|jformat:"%Y-%m-%d" %}
+                                <a href="{% url 'stv:DetailUpdate' object_list.pk %}">{{ object_list.date_persian }}</a>
+                            {% else %}
+                                {{ object_list.date_persian }}
+                            {% endif %}
+                        </td>
+                        <td><span class="badge bg-danger">{{ object_list.total_yesterday }}</span></td>
+                        <td><span class="badge bg-success">{{ object_list.total }}</span></td>
+                        <td><a target="_blank" href="{% url 'stv:print' %}">
+                            <button type="button" class="btn btn-block btn-primary btn-sm">چاپ</button>
+                        </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <h5 class="badge-warning  p-2">
+                    پیام و اطلاع رسانی
+                </h5>
+            <p class="p-1 m-1"> موردی وجود ندارد</p>
+            </div>
+
+            </div>
+        {% endif %}
+{% endblock %}

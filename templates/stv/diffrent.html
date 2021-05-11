@@ -1,0 +1,21 @@
+{% extends 'stv/base.html' %}
+{% block main %}
+    <div class="col-md-12">
+       <div class="card bg-danger-gradient">
+
+           <div class="card-header">
+                <h3 class="card-title">وجود اختلاف در سیتواسیون ارسالی</h3>
+            </div>
+            <div class="card-body">
+                {{ diffrent }}
+           </div>
+              <!-- /.card-body -->
+           <di>
+               <a href={{ back }}>
+                <button type="submit" class="btn btn-block btn-primary btn-lg" >بازگشت برای اصلاح</button>
+                   </a>
+           </di>
+       </div>
+            <!-- /.card -->
+    </div>
+{% endblock %}

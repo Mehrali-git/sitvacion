@@ -1,0 +1,152 @@
+{% load static %}
+{% load jformat %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>پنل مدیریت | صورتحساب</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 4 -->
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'adminlt/dist/css/adminlte.min.css'%}">
+
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- bootstrap rtl -->
+  <link rel="stylesheet" href="{% static 'adminlt/dist/css/bootstrap-rtl.min.css'%}">
+  <!-- template rtl version -->
+  <link rel="stylesheet" href="{% static 'adminlt/dist/css/custom-style.css'%}">
+</head>
+{#onload="window.print();"#}
+<body >
+<div class="wrapper">
+  <!-- Main content -->
+  <!-- Main content -->
+  <div class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="fa"> <img src="{%static 'my_change\images\icon\bmi.png'%}" alt="Bank_Melli"
+           class="brand-image img-circle elevation-4" style="opacity: 10"></i>  شعبه  {{ user.branch_name }}
+          <small class="float-left">{{ obj_date|jformat:"%Y-%m-%d" }}</small>
+        </h4>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-col">
+      <div class="col-sm-12 invoice-col">
+        <b>سیتواسیون صندوق به تاریخ: </b>
+        {{ object_list.date_persian|jformat:'%d-%m-%Y'}}
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+      <div class="col-6 table-responsive">
+        <table class="table table-striped">
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-6 table-responsive">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>تعداد</th>
+            <th>محصول</th>
+            <th>سریال #</th>
+            <th>توضیحات</th>
+            <th>قیمت کل</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>ندای وظیفه</td>
+            <td>455-981-221</td>
+            <td>بازی شوتر شخص اول</td>
+            <td>150000 تومان</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>تلویزیون هوشمند سامسونگ</td>
+            <td>247-925-726</td>
+            <td>لوازم خانگی</td>
+            <td>2,000,000 تومان</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>لباسشویی</td>
+            <td>735-845-642</td>
+            <td>
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ </td>
+            <td>10,000 تومان</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>نجات سرباز رایان</td>
+            <td>422-568-642</td>
+            <td>لورم ایپسوم متن ساختگی</td>
+            <td>20,000 تومان</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <!-- accepted payments column -->
+      <div class="col-6">
+        <p class="lead">روش های پرداخت :</p>
+        <img src="../../dist/img/credit/visa.png" alt="Visa">
+        <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
+        <img src="../../dist/img/credit/american-express.png" alt="American Express">
+        <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+
+        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+          پرداخت از طریق کلیه کارت های بانکی عضو شتاب امکان پذیر می باشد.
+        </p>
+      </div>
+      <!-- /.col -->
+      <div class="col-6">
+        <p class="lead">مهلت پرداخت : 10 دی 1397</p>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th style="width:50%">مبلغ کل :</th>
+              <td>1,300,000 تومان</td>
+            </tr>
+            <tr>
+              <th>مالیات (9.3%)</th>
+              <td>300,000 تومان</td>
+            </tr>
+            <tr>
+              <th>تخفیف :</th>
+              <td>20,000 تومان</td>
+            </tr>
+            <tr>
+              <th>مبلغ قابل پرداخت:</th>
+              <td>900,000 تومان</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

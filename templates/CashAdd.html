@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cash</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+
+    <div>
+        {{ form.date_per }}
+    </div>
+
+
+    <button name="button">ok</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% extends 'registration/base.html' %}
+<p>{{user.get_full_name}}</p>
+{% block title%}لیست مقالات{%endblock%}
+{% block titlebrow %}لیست مقاله پنل مدیریت{%endblock%}
+{% block main %}
+<div class="row">
+  <div class="col-xs-12">
+    {% if object_list %}
+    <div class="box">
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th>موضوع</th>
+              <th>دسته بندی</th>
+              <th>نویسنده</th>
+              <th>خلاصه مقاله</th>
+              <th>تصویر</th>
+              <th>تاریخ انتشار</th>
+              <th>مقاله ویژه</th>
+              <th>وضعیت</th>
+            </tr>
+            {% for article in object_list%}
+            <tr>
+              <td>
+                {% if article.status in 'bd'|make_list or user.is_superuser%}
+                <a href="{% url 'account:article-update' article.pk %}">{{article.title}}</a>
+                {% else %}
+                {{article.title}}
+                {% endif %}
+              </td>
+              <td>{{article.category_to_str}}</td>
+              <td>{{article.author.get_full_name}}</td>
+              <td>{{article.description|striptags|truncatewords:20}}</td>
+              <td><img src="{{article.thamnail.url}}" width="100" height="85" style="border-radius:5px" alt=""></td>
+              <td>{{article.jpublish}}</td>
+              <td>
+                {% if article.is_special%}
+                <i class="fa fa-check-circle "style="color:#51a433;}" ></i>
+                {% else %}
+                <i class="fa fa-minus-circle"  style="color:#c1323f;}" ></i>
+                {% endif %}
+              </td>
+              <td>
+                {% if article.status == 'p'  %}
+                <span class="label pull-right  bg-green">منتشرشده</span>
+                <span class="label pull-right bg-blue">
+                  <a class="label" target="_blank" href="{%url 'blog:detail' article.slug%}">مشاهده مقاله</a>
+                </span>
+                {%elif article.status == 'b'%}
+                <span class="label pull-right label-dark ">
+                  <a class="label" target="_blank" href="{%url 'blog:detail' article.slug%}">برگشت شده</a>
+                </span>
+                {%elif article.status == 'i' %}
+                {%if user.is_superuser%}
+                <span class="label pull-right label-info">
+                <a class="label" target="_blank" href="{%url 'blog:Preview' article.pk %}">
+                  در حال بررسی
+                </a>
+                </span>
+                {%else %}
+                <span class="label pull-right label-info">در حال بررسی</span>
+                {% endif%}
+
+                {% else %}
+                <span class="label pull-right label-warning">
+                  <a class="label" href="{% url 'blog:Preview' article.pk %}">پیش نویس</a>
+                </span>
+                {% endif %}
+                {% if user.is_superuser%}
+                <span class="label pull-right bg-red ">
+                  <a class="label" href="{% url 'account:article-delete' article.pk %}">حذف</a>
+                </span>
+                {% endif%}
+              </td>
+            </tr>
+            {%endfor %}
+          </tbody>
+        </table>
+      </div><!-- /.box-body -->
+
+
+    </div><!-- /.box -->
+    {% else %}
+    <h3>
+      مقاله ای برای نمایش وجود ندارد
+    </h3>
+    {%endif %}
+  </div>
+</div>
+{% endblock %}
